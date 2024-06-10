@@ -8,15 +8,17 @@ function App() {
   const [inputUser, setInputUser] = useState({
     initialInvestment: 10000,
     annualInvestment: 1200,
-    expectedReturns: 6,
+    expectedReturn: 6,
     duration: 10,
   });
+
+  const inputIsValid = inputUser.duration >= 1;
 
   function handleChange(inputIdentifer, newValue) {
     setInputUser((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputIdentifer]: newValue,
+        [inputIdentifer]: +newValue,
       };
     });
   }
@@ -25,7 +27,10 @@ function App() {
     <>
       <Header />
       <UserInput inputUser={inputUser} onChange={handleChange} />
-      <Result input={inputUser} />
+      {!inputIsValid && (
+        <p className="center">Please enter the duration greater then 1</p>
+      )}
+      {inputIsValid && <Result input={inputUser} />}
     </>
   );
 }

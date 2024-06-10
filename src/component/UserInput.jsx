@@ -31,10 +31,8 @@ const UserInput = ({ onChange, inputUser }) => {
           <input
             type="number"
             required
-            value={inputUser.expectedReturns}
-            onChange={(event) =>
-              onChange("expectedReturns", event.target.value)
-            }
+            value={inputUser.expectedReturn}
+            onChange={(event) => onChange("expectedReturn", event.target.value)}
           />
         </p>
         <p>
@@ -43,7 +41,7 @@ const UserInput = ({ onChange, inputUser }) => {
             type="number"
             required
             value={inputUser.duration}
-            onChange={(event) => handleChange("duration", event.target.value)}
+            onChange={(event) => onChange("duration", event.target.value)}
           />
         </p>
       </div>
